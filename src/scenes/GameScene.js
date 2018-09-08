@@ -27,22 +27,26 @@ class GameScene extends Scene {
             fill: '#fff',
         });
 
+        this.x = this.width / 2;
         this.seal = new Seal({
             scene: this,
             key: 'seal',
-            x: this.width / 2,
+            x: this.x,
             y: this.height,
         });
-        this.x = this.width / 2;
-        // Enemy generation
+
+
         this.fishies = this.add.group();
         this.time.addEvent({
-            delay: 2000,
+            delay: 800,
             callback: this.addFish,
             callbackScope: this,
             loop: true,
         });
 
+        this.input.on('pointerdown', (pointer) => {
+            this.x = pointer.x;
+        }, this);
         this.input.on('pointermove', (pointer) => {
             this.x = pointer.x;
         }, this);

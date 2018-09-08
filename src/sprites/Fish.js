@@ -10,12 +10,11 @@ export default class extends GameObjects.Sprite {
         config.scene.add.existing(this);
         this.seal = this.scene.seal;
         this.scene.physics.add.collider(this, this.seal, this.getEaten, this.getEaten, this);
-        this.body.velocity.y = 100;
+        this.body.velocity.y = 50;
 
         this.body.acceleration.y = 9.8;
         this.body.setAllowGravity(true);
-        // this.body.setSize(50, 20);
-        this.setScale(0.80, 0.80);
+        this.setScale(0.30, 0.30);
         this.eaten = false;
     }
 

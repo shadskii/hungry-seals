@@ -8,18 +8,15 @@ export default class Seal extends Phaser.GameObjects.Sprite {
         super(config.scene, config.x, config.y, config.key);
         config.scene.physics.world.enable(this);
         config.scene.add.existing(this);
-        this.acceleration = 800;
-        this.body.maxVelocity.x = 300;
         this.alive = true;
         this.body.setCollideWorldBounds(true);
-        this.setScale(.25, .25);
+        this.setScale(.19, .19);
+        // this.body.setSize(this.scene.width / 3, this.scene.height);
+
     }
 
     update(x) {
         this.x = x;
-    }
-
-    jump() {
     }
 
     die() {
