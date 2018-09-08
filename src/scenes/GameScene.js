@@ -33,16 +33,16 @@ class GameScene extends Scene {
 
         this.seal = new Seal({
             scene: this,
-            key: 'boaty',
+            key: 'seal',
             x: this.width / 2,
             y: this.height,
         });
         this.x = this.width / 2;
         // Enemy generation
-        this.enemies = this.add.group();
+        this.fishies = this.add.group();
         this.time.addEvent({
             delay: 2000,
-            callback: this.addMine,
+            callback: this.addFish,
             callbackScope: this,
             loop: true,
         });
@@ -50,20 +50,11 @@ class GameScene extends Scene {
         this.input.on('pointermove', (pointer) => {
             this.x = pointer.x;
         }, this);
-        // Input controls
-        this.isJump = false;
-        this.input.on('pointerdown', (pointer) => {
-            this.isJump = true;
-        });
-        this.input.on('pointerup', (pointer) => {
-            this.isJump = false;
-        });
-        this.spaceJump = this.input.keyboard.addKey(SPACE);
     }
 
     update() {
         this.seal.update(this.x);
-        this.enemies.children.entries.forEach((element) => {
+        this.fishies.children.entries.forEach((element) => {
             element.update();
         });
         if (!this.seal.alive) {
@@ -77,11 +68,11 @@ class GameScene extends Scene {
         return Math.floor(Math.random() * range) + pad;
     }
 
-    addMine() {
-        this.enemies.add(
+    addFish() {
+        this.fishies.add(
             new Fish({
                 scene: this,
-                key: 'mine',
+                key: 'fish',
                 x: this.enemySpawnXValue(),
                 y: -this.height / 4,
             })

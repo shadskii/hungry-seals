@@ -11,11 +11,8 @@ class BootScene extends Scene {
     preload() {
         this.load.image('water', 'images/water.png');
         this.load.image('ground', 'images/sandy-bottom.png');
-        this.load.image('torpedo', 'images/torpedo.png');
-        this.load.image('mine', 'images/fish.png');
-        this.load.image('boaty', 'images/darn-cute-seal.png');
-        this.load.image('whale', 'images/whale.png');
-        this.load.image('crab', 'images/crab.png');
+        this.load.image('fish', 'images/fish.png');
+        this.load.image('seal', 'images/darn-cute-seal.png');
         this.load.image('play-again', 'images/play_again.png');
     }
 
