@@ -1,5 +1,6 @@
 import { Scene, Display, SPACE } from 'phaser';
 import { calculateSize } from '../game';
+import Seal from '../sprites/Seal';
 
 /**
  * The title scene is presented to the user first and gives them
@@ -11,6 +12,7 @@ class TitleScene extends Scene {
     }
     create() {
         const { width, height } = calculateSize();
+        this.width = width;
         this.scene.bringToTop();
         this.add.image(width / 2, height / 2, 'water').setScale(10, 2);
         this.platforms = this.physics.add.staticGroup();
@@ -23,6 +25,8 @@ class TitleScene extends Scene {
             fontSize: width / 12 + 'px',
             fill: '#fff',
         });
+        // this.subtitle = this.add.text(width / 10)
+
         this.pressStart = this.add.text(0, 0, 'TAP TO START', {
             fontSize: '16px',
             fill: '#fff',
@@ -33,6 +37,12 @@ class TitleScene extends Scene {
         this.start = false;
         this.input.on('pointerdown', (pointer) => {
             this.start = true;
+        });
+        this.seal = new Seal({
+            scene: this,
+            key: 'seal',
+            x: width / 2,
+            y: 0,
         });
     }
 
