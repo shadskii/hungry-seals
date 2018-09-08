@@ -1,5 +1,5 @@
 import { Phaser, Scene, SPACE } from 'phaser';
-import Boaty from '../sprites/Boaty';
+import Seal from '../sprites/Seal';
 import Mine from '../sprites/Mine';
 import Whale from '../sprites/Whale';
 import Crab from '../sprites/Crab';
@@ -31,11 +31,11 @@ class GameScene extends Scene {
             fill: '#fff',
         });
 
-        this.boaty = new Boaty({
+        this.seal = new Seal({
             scene: this,
             key: 'boaty',
-            x: this.width / 8,
-            y: this.height / 7,
+            x: this.width / 2,
+            y: this.height,
         });
         this.x = this.width / 2;
         // Enemy generation
@@ -62,11 +62,11 @@ class GameScene extends Scene {
     }
 
     update() {
-        this.boaty.update(this.x);
+        this.seal.update(this.x);
         this.enemies.children.entries.forEach((element) => {
             element.update();
         });
-        if (!this.boaty.alive) {
+        if (!this.seal.alive) {
             this.scene.start('GameOverScene', { score: this.score });
         }
     }
