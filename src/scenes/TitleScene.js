@@ -12,7 +12,6 @@ class TitleScene extends Scene {
     }
     create() {
         const { width, height } = calculateSize();
-        this.width = width;
         this.scene.bringToTop();
         this.add.image(width / 2, height / 2, 'water').setScale(10, 2);
         this.platforms = this.physics.add.staticGroup();
@@ -25,7 +24,7 @@ class TitleScene extends Scene {
             fontSize: width / 12 + 'px',
             fill: '#fff',
         });
-        // this.subtitle = this.add.text(width / 10)
+        this.subtitle = this.add.text(width / 10)
 
         this.pressStart = this.add.text(0, 0, 'TAP TO START', {
             fontSize: '16px',
@@ -42,7 +41,7 @@ class TitleScene extends Scene {
             scene: this,
             key: 'seal',
             x: width / 2,
-            y: 0,
+            y: height,
         });
     }
 
