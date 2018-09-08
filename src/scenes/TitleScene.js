@@ -1,5 +1,5 @@
-import {Scene, Display, SPACE} from 'phaser';
-import {calculateSize} from '../game';
+import { Scene, Display, SPACE } from 'phaser';
+import { calculateSize } from '../game';
 
 /**
  * The title scene is presented to the user first and gives them
@@ -7,10 +7,10 @@ import {calculateSize} from '../game';
  */
 class TitleScene extends Scene {
     constructor(test) {
-        super({key: 'TitleScene'});
+        super({ key: 'TitleScene' });
     }
     create() {
-        const {width, height} = calculateSize();
+        const { width, height } = calculateSize();
         this.scene.bringToTop();
         this.add.image(width / 2, height / 2, 'water').setScale(10, 2);
         this.platforms = this.physics.add.staticGroup();
@@ -19,7 +19,7 @@ class TitleScene extends Scene {
             .setScale(10, 0.5)
             .refreshBody();
 
-        this.title = this.add.text(width / 10, height / 10, 'Boaty Boat', {
+        this.title = this.add.text(width / 10, height / 10, 'Hungry Seals', {
             fontSize: width / 12 + 'px',
             fill: '#fff',
         });

@@ -14,19 +14,11 @@ export default class Boaty extends Phaser.GameObjects.Sprite {
         this.body.setCollideWorldBounds(true);
     }
 
-    update(jump) {
-        if (jump) {
-            this.jump();
-        } else if (this.angle < 15) {
-            this.angle += 0.75;
-        }
+    update(x) {
+        this.x = x;
     }
 
     jump() {
-        this.body.setVelocityY(-400);
-        if (this.angle > -20) {
-            this.angle = -15;
-        }
     }
 
     die() {

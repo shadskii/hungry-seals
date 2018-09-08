@@ -1,16 +1,17 @@
-import {Phaser, Scene, SPACE} from 'phaser';
+import { Phaser, Scene, SPACE } from 'phaser';
 import Boaty from '../sprites/Boaty';
 import Mine from '../sprites/Mine';
 import Whale from '../sprites/Whale';
 import Crab from '../sprites/Crab';
 import Torpedo from '../sprites/Torpedo';
+import Fish from '../sprites/Fish';
 
 /**
  * This is the primary scene. The game is played during this scene.
  */
 class GameScene extends Scene {
     constructor() {
-        super({key: 'GameScene'});
+        super({ key: 'GameScene' });
     }
 
     create() {
@@ -36,34 +37,19 @@ class GameScene extends Scene {
             x: this.width / 8,
             y: this.height / 7,
         });
-
+        this.x = this.width / 2;
         // Enemy generation
         this.enemies = this.add.group();
         this.time.addEvent({
-            delay: 800,
+            delay: 2000,
             callback: this.addMine,
             callbackScope: this,
             loop: true,
         });
-        this.time.addEvent({
-            delay: 2000,
-            callback: this.addWhale,
-            callbackScope: this,
-            loop: true,
-        });
-        this.time.addEvent({
-            delay: 4000,
-            callback: this.addCrab,
-            callbackScope: this,
-            loop: true,
-        });
-        this.time.addEvent({
-            delay: 9000,
-            callback: this.addTorpedo,
-            callbackScope: this,
-            loop: true,
-        });
 
+        this.input.on('pointermove', (pointer) => {
+            this.x = pointer.x;
+        }, this);
         // Input controls
         this.isJump = false;
         this.input.on('pointerdown', (pointer) => {
@@ -76,58 +62,28 @@ class GameScene extends Scene {
     }
 
     update() {
-        this.boaty.update(this.isJump || this.spaceJump.isDown);
+        this.boaty.update(this.x);
         this.enemies.children.entries.forEach((element) => {
             element.update();
         });
         if (!this.boaty.alive) {
-            this.scene.start('GameOverScene', {score: this.score});
+            this.scene.start('GameOverScene', { score: this.score });
         }
     }
 
-    enemySpawnYValue() {
-        let range = this.height * 0.9;
-        let topPad = this.height * 0.02;
-        return Math.floor(Math.random() * range) + topPad;
+    enemySpawnXValue() {
+        let range = this.width * 0.9;
+        let pad = this.width * 0.02;
+        return Math.floor(Math.random() * range) + pad;
     }
 
     addMine() {
         this.enemies.add(
-            new Mine({
+            new Fish({
                 scene: this,
                 key: 'mine',
-                x: this.width + this.width / 10,
-                y: this.enemySpawnYValue(),
-            })
-        );
-    }
-    addWhale() {
-        this.enemies.add(
-            new Whale({
-                scene: this,
-                key: 'whale',
-                x: this.width + this.width / 5,
-                y: this.enemySpawnYValue(),
-            })
-        );
-    }
-    addCrab() {
-        this.enemies.add(
-            new Crab({
-                scene: this,
-                key: 'crab',
-                x: this.width + this.width / 10,
-                y: this.height * 0.95,
-            })
-        );
-    }
-    addTorpedo() {
-        this.enemies.add(
-            new Torpedo({
-                scene: this,
-                key: 'torpedo',
-                x: this.width + this.width / 10,
-                y: this.enemySpawnYValue(),
+                x: this.enemySpawnXValue(),
+                y: -this.height / 4,
             })
         );
     }
