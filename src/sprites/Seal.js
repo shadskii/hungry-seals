@@ -10,8 +10,7 @@ export default class Seal extends Phaser.GameObjects.Sprite {
         config.scene.add.existing(this);
         this.alive = true;
         this.body.setCollideWorldBounds(true);
-        this.setScale(.19, .19);
-        // this.body.setSize(this.scene.width / 3, this.scene.height);
+        this.setScale(.15, .15);
 
     }
 

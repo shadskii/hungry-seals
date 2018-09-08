@@ -2,6 +2,9 @@ import { Phaser, Scene } from 'phaser';
 import Seal from '../sprites/Seal';
 import Fish from '../sprites/Fish';
 
+const MISS_LIMIT = 3;
+const MISS = 'X';
+
 /**
  * This is the primary scene. The game is played during this scene.
  */
@@ -22,7 +25,8 @@ class GameScene extends Scene {
             .refreshBody();
 
         this.score = 0;
-        this.scoreText = this.add.text(24, 24, '0', {
+        this.numMissed = 0;
+        this.scoreText = this.add.text(24, 24, `${this.score} ${MISS.repeat(MISS_LIMIT - this.numMissed)}`, {
             fontSize: '32px',
             fill: '#fff',
         });
@@ -57,7 +61,7 @@ class GameScene extends Scene {
         this.fishies.children.entries.forEach((element) => {
             element.update();
         });
-        if (!this.seal.alive) {
+        if (this.numMissed > MISS_LIMIT) {
             this.scene.start('GameOverScene', { score: this.score });
         }
     }
@@ -80,7 +84,18 @@ class GameScene extends Scene {
     }
     incrementScore() {
         this.score++;
-        this.scoreText.setText(this.score);
+        this.updateScoreText();
+    }
+
+    incrementMiss() {
+        this.numMissed++;
+        this.updateScoreText();
+    }
+
+    updateScoreText() {
+        let num = MISS_LIMIT - this.numMissed;
+        num = num >= 0 ? num : 0;
+        this.scoreText.setText(`${this.score} ${MISS.repeat(num)}`);
     }
 }
 

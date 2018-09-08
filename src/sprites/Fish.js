@@ -14,7 +14,7 @@ export default class extends GameObjects.Sprite {
 
         this.body.acceleration.y = 9.8;
         this.body.setAllowGravity(true);
-        this.setScale(0.30, 0.30);
+        this.setScale(0.25, 0.25);
         this.eaten = false;
     }
 
@@ -27,6 +27,7 @@ export default class extends GameObjects.Sprite {
             this.scene.incrementScore();
             this.destoryFish();
         } else if (this.y > this.scene.height * 1.2) {
+            this.scene.incrementMiss();
             this.destoryFish();
         }
     }
