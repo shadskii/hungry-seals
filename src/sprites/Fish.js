@@ -33,7 +33,7 @@ export default class extends GameObjects.Sprite {
     }
 
     destoryFish() {
-        this.scene.enemies.remove(this);
+        this.scene.fishies.remove(this);
         this.destroy();
     }
 }

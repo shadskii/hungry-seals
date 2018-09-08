@@ -1,9 +1,5 @@
-import { Phaser, Scene, SPACE } from 'phaser';
+import { Phaser, Scene } from 'phaser';
 import Seal from '../sprites/Seal';
-import Mine from '../sprites/Mine';
-import Whale from '../sprites/Whale';
-import Crab from '../sprites/Crab';
-import Torpedo from '../sprites/Torpedo';
 import Fish from '../sprites/Fish';
 
 /**
