@@ -1,8 +1,8 @@
 {
-    "name": "boaty-boat",
-    "homepage": "https://shadskii.github.io/boaty-boat",
+    "name": "hungry-seals",
+    "homepage": "https://shadskii.github.io/hungry-seals",
     "version": "2.0.0",
-    "description": "Help Boaty Boat survive his boating adventure",
+    "description": "Help this lovable loaf stay well fed",
     "author": "Jake Hassel <jake.k.hassel@gmail.com>",
     "main": "index.js",
     "scripts": {
