@@ -49,7 +49,7 @@ class GameScene extends Scene {
         });
         this.time.addEvent({
             delay: 723,
-            callback: () => this.addFishIf(40),
+            callback: () => this.addFishIf(20),
             callbackScope: this,
             loop: true,
         });
