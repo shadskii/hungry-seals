@@ -32,7 +32,6 @@ class TitleScene extends Scene {
         });
         Display.Align.In.TopCenter(this.title, this.add.zone(width / 2, height - height / 4, width, height));
         Display.Align.In.BottomCenter(this.pressStart, this.add.zone(width / 2, height / 4, width, height));
-        this.startKey = this.input.keyboard.addKey(SPACE);
         this.start = false;
         this.input.on('pointerdown', (pointer) => {
             this.start = true;
@@ -46,7 +45,7 @@ class TitleScene extends Scene {
     }
 
     update() {
-        if (this.startKey.isDown || this.start) {
+        if (this.start) {
             this.scene.start('GameScene');
         }
     }

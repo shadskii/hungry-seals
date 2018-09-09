@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 /**
- * The protagonist of this game. Beloved by all.
+ * A hungry yet lovable loaf 
  */
 export default class Seal extends Phaser.GameObjects.Sprite {
     constructor(config) {

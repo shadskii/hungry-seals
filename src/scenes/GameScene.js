@@ -1,4 +1,4 @@
-import { Phaser, Scene } from 'phaser';
+import { Scene } from 'phaser';
 import Seal from '../sprites/Seal';
 import Fish from '../sprites/Fish';
 

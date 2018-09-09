@@ -1,7 +1,7 @@
-import { Phaser, GameObjects } from 'phaser';
+import { GameObjects } from 'phaser';
 
 /**
- * A general enemy for the game. Enemies should extend this.
+ * Debatably delicious but definitely edible.
  */
 export default class extends GameObjects.Sprite {
     constructor(config) {
