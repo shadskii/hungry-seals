@@ -14,6 +14,7 @@ class BootScene extends Scene {
         this.load.image('fish', 'images/fish.png');
         this.load.image('seal', 'images/darn-cute-seal.png');
         this.load.image('play-again', 'images/play_again.png');
+        this.load.image('awk-seal', 'images/awkward-seal.jpg');
     }
 
     create() {

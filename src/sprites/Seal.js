@@ -17,8 +17,4 @@ export default class Seal extends Phaser.GameObjects.Sprite {
     update(x) {
         this.x = x;
     }
-
-    die() {
-        this.alive = false;
-    }
 }

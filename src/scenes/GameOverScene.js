@@ -1,4 +1,4 @@
-import {Scene, Display} from 'phaser';
+import { Scene, Display } from 'phaser';
 
 /**
  * Scene shown to the user after the game has ended. Allowing
@@ -6,7 +6,7 @@ import {Scene, Display} from 'phaser';
  */
 export default class GameOverScene extends Scene {
     constructor() {
-        super({key: 'GameOverScene'});
+        super({ key: 'GameOverScene' });
     }
 
     init(data) {
@@ -19,6 +19,7 @@ export default class GameOverScene extends Scene {
 
         this.scene.bringToTop();
         this.add.image(width / 2, height / 2, 'water').setScale(10, 2);
+        this.add.image(width / 2, height / 5, 'awk-seal');
         this.platforms = this.physics.add.staticGroup();
         this.platforms
             .create(0, height, 'ground')
@@ -36,7 +37,7 @@ export default class GameOverScene extends Scene {
                 this.scene.start('GameScene');
             }
         });
-        Display.Align.In.Center(this.scoreText, this.add.zone(width / 2, height / 4, width, height));
-        Display.Align.In.BottomCenter(this.restartButton, this.add.zone(width / 2, height / 4, width, height));
+        Display.Align.In.Center(this.scoreText, this.add.zone(width / 2, height / 2, width, height));
+        Display.Align.In.BottomCenter(this.restartButton, this.add.zone(width / 2, height / 3, width, height));
     }
 }
