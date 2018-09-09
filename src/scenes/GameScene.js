@@ -47,6 +47,24 @@ class GameScene extends Scene {
             callbackScope: this,
             loop: true,
         });
+        this.time.addEvent({
+            delay: 723,
+            callback: () => this.addFishIf(40),
+            callbackScope: this,
+            loop: true,
+        });
+        this.time.addEvent({
+            delay: 627,
+            callback: () => this.addFishIf(100),
+            callbackScope: this,
+            loop: true,
+        });
+        this.time.addEvent({
+            delay: 1012,
+            callback: () => this.addFishIf(200),
+            callbackScope: this,
+            loop: true,
+        });
 
         this.input.on('pointerdown', (pointer) => {
             this.x = pointer.x;
@@ -81,6 +99,11 @@ class GameScene extends Scene {
                 y: -this.height / 4,
             })
         );
+    }
+    addFishIf(condition) {
+        if (this.score > condition) {
+            this.addFish();
+        }
     }
     incrementScore() {
         this.score++;
