@@ -42,12 +42,7 @@ class GameScene extends Scene {
 
 
         this.fishies = this.add.group();
-        // this.time.addEvent({
-        //     delay: 800,
-        //     callback: this.addFish,
-        //     callbackScope: this,
-        //     loop: true,
-        // });
+
         this.time.addEvent({
             delay: 400,
             callback: () => this.addFishBetween(0, 20),
