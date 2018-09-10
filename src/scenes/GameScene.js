@@ -18,6 +18,7 @@ class GameScene extends Scene {
         this.height = this.sys.game.config.height;
 
         this.add.image(this.width / 2, this.height / 2, 'water').setScale(10, 2);
+        this.add.image(this.width / 2, 'derp-cloud');
         this.platforms = this.physics.add.staticGroup();
         this.platforms
             .create(0, this.height, 'ground')
@@ -41,27 +42,27 @@ class GameScene extends Scene {
 
 
         this.fishies = this.add.group();
+        // this.time.addEvent({
+        //     delay: 800,
+        //     callback: this.addFish,
+        //     callbackScope: this,
+        //     loop: true,
+        // });
         this.time.addEvent({
-            delay: 800,
-            callback: this.addFish,
+            delay: 400,
+            callback: () => this.addFishBetween(0, 20),
             callbackScope: this,
             loop: true,
         });
         this.time.addEvent({
-            delay: 723,
-            callback: () => this.addFishIf(20),
+            delay: 200,
+            callback: () => this.addFishBetween(20, 100),
             callbackScope: this,
             loop: true,
         });
         this.time.addEvent({
-            delay: 627,
-            callback: () => this.addFishIf(100),
-            callbackScope: this,
-            loop: true,
-        });
-        this.time.addEvent({
-            delay: 1012,
-            callback: () => this.addFishIf(200),
+            delay: 100,
+            callback: () => this.addFishBetween(100, 200),
             callbackScope: this,
             loop: true,
         });
@@ -100,8 +101,8 @@ class GameScene extends Scene {
             })
         );
     }
-    addFishIf(condition) {
-        if (this.score > condition) {
+    addFishBetween(min, max) {
+        if (this.score >= min && this.score <= max) {
             this.addFish();
         }
     }
