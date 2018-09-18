@@ -1,4 +1,4 @@
-import { Scene } from 'phaser';
+import {Scene} from 'phaser';
 import Seal from '../sprites/Seal';
 import Fish from '../sprites/Fish';
 
@@ -10,7 +10,7 @@ const MISS = 'X';
  */
 class GameScene extends Scene {
     constructor() {
-        super({ key: 'GameScene' });
+        super({key: 'GameScene'});
     }
 
     create() {
@@ -18,7 +18,6 @@ class GameScene extends Scene {
         this.height = this.sys.game.config.height;
 
         this.add.image(this.width / 2, this.height / 2, 'water').setScale(10, 2);
-        this.add.image(this.width / 2, 'derp-cloud');
         this.platforms = this.physics.add.staticGroup();
         this.platforms
             .create(0, this.height, 'ground')
@@ -40,7 +39,6 @@ class GameScene extends Scene {
             y: this.height,
         });
 
-
         this.fishies = this.add.group();
 
         this.time.addEvent({
@@ -57,17 +55,25 @@ class GameScene extends Scene {
         });
         this.time.addEvent({
             delay: 100,
-            callback: () => this.addFishBetween(100, 200),
+            callback: () => this.addFishBetween(100, 10000000),
             callbackScope: this,
             loop: true,
         });
 
-        this.input.on('pointerdown', (pointer) => {
-            this.x = pointer.x;
-        }, this);
-        this.input.on('pointermove', (pointer) => {
-            this.x = pointer.x;
-        }, this);
+        this.input.on(
+            'pointerdown',
+            (pointer) => {
+                this.x = pointer.x;
+            },
+            this
+        );
+        this.input.on(
+            'pointermove',
+            (pointer) => {
+                this.x = pointer.x;
+            },
+            this
+        );
     }
 
     update() {
@@ -76,7 +82,7 @@ class GameScene extends Scene {
             element.update();
         });
         if (this.numMissed > MISS_LIMIT) {
-            this.scene.start('GameOverScene', { score: this.score });
+            this.scene.start('GameOverScene', {score: this.score});
         }
     }
 
