@@ -1,4 +1,4 @@
-import { Scene, Display, SPACE } from 'phaser';
+import { Scene, Display } from 'phaser';
 import { calculateSize } from '../game';
 import Seal from '../sprites/Seal';
 
