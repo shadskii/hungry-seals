@@ -1,5 +1,5 @@
-import { Scene, Display } from 'phaser';
-import { calculateSize } from '../game';
+import {Scene, Display} from 'phaser';
+import {calculateSize} from '../game';
 import Seal from '../sprites/Seal';
 
 /**
@@ -8,10 +8,10 @@ import Seal from '../sprites/Seal';
  */
 class TitleScene extends Scene {
     constructor(test) {
-        super({ key: 'TitleScene' });
+        super({key: 'TitleScene'});
     }
     create() {
-        const { width, height } = calculateSize();
+        const {width, height} = calculateSize();
         this.scene.bringToTop();
         this.add.image(width / 2, height / 2, 'water').setScale(10, 2);
         this.platforms = this.physics.add.staticGroup();
@@ -24,7 +24,7 @@ class TitleScene extends Scene {
             fontSize: width / 12 + 'px',
             fill: '#fff',
         });
-        this.subtitle = this.add.text(width / 10)
+        this.subtitle = this.add.text(width / 10);
 
         this.pressStart = this.add.text(0, 0, 'TAP TO START', {
             fontSize: '16px',

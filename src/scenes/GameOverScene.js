@@ -1,4 +1,4 @@
-import { Scene, Display } from 'phaser';
+import {Scene, Display} from 'phaser';
 
 /**
  * Scene shown to the user after the game has ended. Allowing
@@ -6,7 +6,7 @@ import { Scene, Display } from 'phaser';
  */
 export default class GameOverScene extends Scene {
     constructor() {
-        super({ key: 'GameOverScene' });
+        super({key: 'GameOverScene'});
     }
 
     init(data) {

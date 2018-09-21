@@ -1,11 +1,11 @@
-import { Scene } from 'phaser';
+import {Scene} from 'phaser';
 
 /**
  * This scene's primary responsibility is to load assets for the rest of the game.
  */
 class BootScene extends Scene {
     constructor() {
-        super({ key: 'BootScene' });
+        super({key: 'BootScene'});
     }
 
     preload() {

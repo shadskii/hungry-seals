@@ -1,4 +1,4 @@
-import { GameObjects } from 'phaser';
+import {GameObjects} from 'phaser';
 
 /**
  * Debatably delicious but definitely edible.
